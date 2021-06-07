@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2021_06_07_163736) do
   create_table "movie_selections", force: :cascade do |t|
     t.bigint "movie_id", null: false
     t.bigint "user_id", null: false
-    t.boolean "watched"
+    t.boolean "watched", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["movie_id"], name: "index_movie_selections_on_movie_id"
@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 2021_06_07_163736) do
   create_table "movies", force: :cascade do |t|
     t.string "title"
     t.string "director"
-    t.string "poster"
     t.string "genre"
     t.integer "rating"
     t.integer "runtime"
