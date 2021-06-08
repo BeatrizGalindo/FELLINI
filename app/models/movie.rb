@@ -1,4 +1,5 @@
 class Movie < ApplicationRecord
-  has_many :movie_platforms
-  has_many :platforms, through: :movie_platforms
+  extend Enumerize
+
+  enumerize :platform, in: [:netflix, :amazon, :disney_plus, :hbo_max, :youtube], predicates: true, scope: true
 end

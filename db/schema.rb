@@ -10,19 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_07_163736) do
+ActiveRecord::Schema.define(version: 2021_06_08_094723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "movie_platforms", force: :cascade do |t|
-    t.bigint "movie_id", null: false
-    t.bigint "platform_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["movie_id"], name: "index_movie_platforms_on_movie_id"
-    t.index ["platform_id"], name: "index_movie_platforms_on_platform_id"
-  end
 
   create_table "movie_selections", force: :cascade do |t|
     t.bigint "movie_id", null: false
@@ -44,13 +35,7 @@ ActiveRecord::Schema.define(version: 2021_06_07_163736) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "platforms", force: :cascade do |t|
-    t.string "name"
-    t.string "logo"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.string "platform"
   end
 
   create_table "users", force: :cascade do |t|
@@ -67,8 +52,6 @@ ActiveRecord::Schema.define(version: 2021_06_07_163736) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "movie_platforms", "movies"
-  add_foreign_key "movie_platforms", "platforms"
   add_foreign_key "movie_selections", "movies"
   add_foreign_key "movie_selections", "users"
 end
