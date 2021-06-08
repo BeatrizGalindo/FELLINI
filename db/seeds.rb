@@ -19,10 +19,9 @@ Movie.destroy_all
 # then we save it
 platforms = Movie.platform.values
 
-3.times do
+10.times do
   movie_title = Faker::Movie.unique.title
-  api_key = "b9c13778"
-  url = "http://www.omdbapi.com/?t=#{movie_title}&apikey=#{api_key}"
+  url = "http://www.omdbapi.com/?t=#{movie_title}&apikey=#{ENV['OMDB_KEY']}"
   response = JSON.parse(URI.open(url).read)
 
   movie = Movie.new(
@@ -30,12 +29,12 @@ platforms = Movie.platform.values
     description: response["Plot"],
     director: response["Director"],
     year: response["Year"],
-    poster: response["Poster"],
     rating: response["Metascore"],
     genre: response["Genre"],
     runtime: response["Runtime"],
     platform: platforms.sample
   )
-
+  poster_file = URI.open(response["Poster"])
+  movie.poster.attach(io: poster_file, filename: response["Title"], content_type: 'image/png')
   movie.save!
 end
