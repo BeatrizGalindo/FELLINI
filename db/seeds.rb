@@ -9,32 +9,32 @@ require 'open-uri'
 require 'faker'
 Movie.destroy_all
 
-url = "http://www.omdbapi.com/?i=tt3896198&apikey=b9c13778"
-movies = URI.open(url).read
-movies_json = JSON.parse(movies)
-
-movies_json["results"].each do |movie|
-  Movie.create!(
-    title: movie["title"],
-    description: movie["plot"],
-    director: movie["director"],
-    year: movie["year"],
-    poster: movie["poster"],
-    rating: movie["metascore"],
-    genre: movie["genre"],
-    runtime: movie["runtime"],
-    platform: Movie.platform.values.sample
-  )
-end
-
 # 10 great movies
-Faker::Title.random = Random.new(10)
 # Generate a unique title using faker for each movie
-Faker::Title.unique.title
 # Then we build url
-url_new = "http://www.omdbapi.com/?i=tt3896198&apikey=b9c13778b9c13778"
 # Make the request
 # Collect the response in the variable
 # With the details, we create a new instance of a movie
 # select the random platform and assign it to the movie
 # then we save it
+platforms = Movie.platform.values
+
+10.times do
+  movie_title = Faker::Movie.unique.title
+  url = "http://www.omdbapi.com/?t=#{movie_title}&apikey=#{ENV['OMDB_KEY']}"
+  response = JSON.parse(URI.open(url).read)
+
+  movie = Movie.new(
+    title: response["Title"],
+    description: response["Plot"],
+    director: response["Director"],
+    year: response["Year"],
+    rating: response["Metascore"],
+    genre: response["Genre"],
+    runtime: response["Runtime"],
+    platform: platforms.sample
+  )
+  poster_file = URI.open(response["Poster"])
+  movie.poster.attach(io: poster_file, filename: response["Title"], content_type: 'image/png')
+  movie.save!
+end
