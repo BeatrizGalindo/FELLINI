@@ -28,13 +28,17 @@ movies_json["results"].each do |movie|
 end
 
 # 10 great movies
-Faker::Title.random = Random.new(10)
 # Generate a unique title using faker for each movie
-Faker::Title.unique.title
 # Then we build url
-url_new = "http://www.omdbapi.com/?i=tt3896198&apikey=b9c13778b9c13778"
 # Make the request
 # Collect the response in the variable
 # With the details, we create a new instance of a movie
 # select the random platform and assign it to the movie
 # then we save it
+10.times do
+  great_movies = Movie.new(
+    title:    Faker::Title.unique.title,
+  )
+  platform = Movie.platform.values.sample;
+  great_movies.save!
+end
