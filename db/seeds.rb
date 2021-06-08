@@ -8,6 +8,17 @@
 require 'open-uri'
 require 'faker'
 Movie.destroy_all
+User.destroy_all
+
+
+User.create!(first_name: "Nicholas", last_name: "Dillon", email: "nick@test.com", password: "123456")
+puts "Created User with email nick@test.com and password 123456"
+
+5.times do
+  User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "123456")
+end
+
+puts "Created 5 Random Users"
 
 # 10 great movies
 # Generate a unique title using faker for each movie
@@ -38,3 +49,5 @@ platforms = Movie.platform.values
   movie.poster.attach(io: poster_file, filename: response["Title"], content_type: 'image/png')
   movie.save!
 end
+
+puts "Created 10 movies"
