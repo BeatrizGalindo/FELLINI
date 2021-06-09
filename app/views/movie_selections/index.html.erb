@@ -1,0 +1,15 @@
+<h1>Watchlist...</h1>
+
+<div class= "card-space">
+  <div class="cards">
+    <% @movie_selections.each do |movie_selection| %>
+
+      <%= movie_selection.movie.title %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path movie_selection.movie.poster.key %>)">
+      </div>
+      <%= link_to 'marked as watched', movie_selection_path(movie_selection), method: :put %>
+    <% end %>
+  </div>
+</div>
+
+
