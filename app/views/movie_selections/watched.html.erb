@@ -1,10 +1,18 @@
 <h1>Already watched...</h1>
-<!-- here some button to navigate between already watch and wachtlist -->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="div.col-md-6">
+      <%= link_to  'Watchlist', movie_selections_path, class: "btn m-3" %>
+      <%= link_to  'Already watched', watched_movie_selections_path, class: "btn m-3" %>
+    </div>
+  </div>
+</div>
+
+
 <div class= "card-space">
   <div class="cards">
     <% @movie_selections.each do |movie_selection| %>
-      <%= movie_selection.movie.title %>
-      <%#= link_to movie_path(movie) do %>
+      <%#= movie_selection.movie.title %>
         <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path movie_selection.movie.poster.key %>)">
         </div>
       <%# end %>

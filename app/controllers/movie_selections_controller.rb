@@ -12,6 +12,4 @@ class MovieSelectionsController < ApplicationController
     @movie_selection.toggle!(:watched)
     redirect_to movie_selections_path
   end
-
-
 end
