@@ -1,0 +1,14 @@
+<h1>Already watched...</h1>
+<!-- here some button to navigate between already watch and wachtlist -->
+<div class= "card-space">
+  <div class="cards">
+    <% @movie_selections.each do |movie_selection| %>
+      <%= movie_selection.movie.title %>
+      <%#= link_to movie_path(movie) do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path movie_selection.movie.poster.key %>)">
+        </div>
+      <%# end %>
+    <% end %>
+  </div>
+</div>
+
