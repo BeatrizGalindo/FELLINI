@@ -1,11 +1,22 @@
-<div class="show-container">
+<div class="container">
 
-  <div class="show-info">
-    <div class="show-poster">
-
+  <div class="show-info d-flex">
+    <div class="show-poster d-flex">
+      <%= image_tag @movie.poster, alt: "", class: "movie-poster-show" %>
     </div>
     <div class="show-details">
       <!-- title, description, director, cast, year, runtime, genre, rating AND platform -->
+      <h1 class="movie-title"> <%= @movie.title %> </h1>
+      <h4 class="movie-director"> <%=  @movie.director %> </h4>
+      <p> <%= @movie.description %> </p>
+      <p> <%= @movie.year %> </p>
+      <p> <%= @movie.runtime %> min </p>
+      <p> <%= @movie.genre %> </p>
+      <p> Rating Metascore: <%= @movie.rating %> </p>
+      <p> <strong>Available on:</strong> <%= @movie.platform.capitalize %> </p>
+      <div class="show-btn-container">
+        <%= link_to 'Add to Watchlist', movies_path, class: "btn btn-ghost m-3 show-btn" %>
+      </div>
     </div>
   </div>
 
