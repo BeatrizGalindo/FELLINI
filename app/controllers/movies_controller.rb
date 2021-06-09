@@ -1,6 +1,11 @@
 class MoviesController < ApplicationController
   def index
-    @movies = Movie.all
+    platform = params["platform"]
+    if platform
+      @movies = Movie.where(platform: platform)
+    else
+      @movies = Movie.all
+    end
   end
 
   def show
