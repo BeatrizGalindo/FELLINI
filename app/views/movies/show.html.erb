@@ -15,7 +15,11 @@
       <p> Rating Metascore: <%= @movie.rating %> </p>
       <p> <strong>Available on:</strong> <%= @movie.platform.capitalize %> </p>
       <div class="show-btn-container">
-        <%= link_to 'Add to Watchlist', movie_movie_selections_path(@movie), method: :post, class: "btn btn-ghost m-3 show-btn" %>
+        <% if current_user.movies.include?(@movie) %>
+          <p>This movie is already in your Watch List</p>
+        <% else %>
+          <%= link_to 'Add to Watchlist', movie_movie_selections_path(@movie), method: :post, class: "btn btn-ghost m-3 show-btn" %>
+        <% end %>
       </div>
     </div>
   </div>
