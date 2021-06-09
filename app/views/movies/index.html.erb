@@ -1,12 +1,42 @@
-<h1> Nick's Watchlist...</h1>
-
-<div class= "card-space">
-  <div class="cards">
-    <% @movies.each do |movie| %>
-      <%= link_to movie_path(movie) do %>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path movie.poster.key %>)">
-        </div>
-      <% end %>
-    <% end %>
+ <div class="container">
+  <div class="search-bar">
+    <h1>Find your new favourite...</h1>
   </div>
-</div>
+
+    <div class="platform container">
+      <div class="btn-container">
+        <%= link_to movies_path(platform: "netflix") do %>
+          <span class="platform-btn m-3"><img src="https://www.justwatch.com/images/icon/207360008/s100"></span>
+        <% end %>
+        <%= link_to movies_path(platform: "disney_plus") do %>
+          <span class="platform-btn m-3"><img src="https://www.justwatch.com/images/icon/147638351/s100"></span>
+        <% end %>
+        <%= link_to movies_path(platform: "amazon") do %>
+          <span class="platform-btn m-3"><img src="https://www.justwatch.com/images/icon/52449539/s100"></span>
+        <% end %>
+        <%= link_to movies_path(platform: "youtube") do %>
+          <span class="platform-btn m-3"><img src="https://images.justwatch.com/icon/59562423/s100"></span>
+        <% end %>
+        <%= link_to movies_path(platform: "apple_tv_plus") do %>
+          <span class="platform-btn m-3"><img src="https://images.justwatch.com/icon/152862153/s100"></span>
+        <% end %>
+        <%= link_to movies_path(platform: "now") do %>
+          <span class="platform-btn m-3"><img src="https://images.justwatch.com/icon/243753060/s100"></span>
+        <% end %>
+        <%= link_to movies_path(platform: "rakuten") do %>
+          <span class="platform-btn m-3"><img src="https://images.justwatch.com/icon/128599720/s100"></span>
+        <% end %>
+
+    </div>
+  <div class="movie-list container">
+    <div class= "card-space">
+      <div class="cards">
+        <% @movies.each do |movie| %>
+          <%= link_to movie_path(movie) do %>
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path movie.poster.key %>)">
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
