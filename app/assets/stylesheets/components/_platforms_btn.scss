@@ -1,0 +1,19 @@
+.btn-container {
+  display: inline-block;
+  margin-top: 0px;
+}
+
+.platform-btn {
+  display: flex;
+  flex-direction: column;
+  width: 50px;
+}
+
+.btn-primary {
+  display: inline-block;
+  list-style-type: none;
+}
+
+.platform {
+  display: flex;
+}
