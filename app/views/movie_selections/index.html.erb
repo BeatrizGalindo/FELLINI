@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="div.col-md-6">
-      <%= link_to  'Watchlist', movie_selections_path, class: "btn m-3" %>
+      <%= link_to  'Watchlist', movie_selections_path, class: "btn m-3 active-tab" %>
       <%= link_to  'Already watched', watched_movie_selections_path, class: "btn m-3" %>
     </div>
   </div>
@@ -11,11 +11,16 @@
 
 <div class= "smallcard-space">
   <div class="smallcards">
+
     <% @movie_selections.each do |movie_selection| %>
-      <div class="smallcard-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path movie_selection.movie.poster.key %>)">
+      <div class="smallcard-category relative" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path movie_selection.movie.poster.key %>)">
       </div>
-      <%= link_to '👁', movie_selection_path(movie_selection), method: :put %>
+      <div class="absolute">
+        <%= link_to '👁', movie_selection_path(movie_selection), method: :put %>
+      </div>
+
     <% end %>
+
   </div>
 </div>
 

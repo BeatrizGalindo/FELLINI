@@ -13,3 +13,12 @@
   color: $blue;
 }
 
+.active-tab {
+  color: $gray;
+  background-color: $blue;
+}
+
+.active-tab:hover {
+  opacity: 1;
+  color: $gray;
+}

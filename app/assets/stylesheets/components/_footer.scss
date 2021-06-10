@@ -1,5 +1,5 @@
 .footer {
-  background: rgb(70,70,70);
+  background: #2D333B;
   display: flex;
   align-items: left;
   justify-content: space-between;
@@ -8,6 +8,8 @@
   color: #d8d8d8;
   font-size: 15px;
   bottom: 0;
+  // position: absolute;
+  // width: 100%;
 }
 
 .wrapper {
