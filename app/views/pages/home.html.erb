@@ -1,4 +1,11 @@
-<video autoplay muted loop id=“MyVideo” src=<%= cl_video_path ENV["VIDEO_HOME"] %> type=“video/mp4”>
-</video>
+<div class="home_container">
+  <div class='position-relative'>
+  <video autoplay muted loop src=<%= cl_video_path ENV["VIDEO_HOME"] %> type=“video/mp4” class="video-centre">
+  </video>
 
-<h1>Take your seat...</h1>
+    <div class="home-overlay">
+      <h1>Take your seat...</h1>
+      <%= link_to '...and discover the world of cinema', movies_path, class: "btn-home m-3" %>
+    </div>
+  </div>
+</div>
