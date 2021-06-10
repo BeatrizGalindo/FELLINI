@@ -13,10 +13,15 @@
       <p> <%= @movie.runtime %> min </p>
       <p> <%= @movie.genre %> </p>
       <p> Rating Metascore: <%= @movie.rating %> </p>
-      <p> <strong>Available on:</strong> <%= @movie.platform.capitalize %> </p>
+      <p><strong>Available on:</strong></p>
+
+      <%= link_to movies_path(platform: @movie.platform) do %>
+        <span class="platform-btn m-3"><%= image_tag "#{@movie.platform}.jpg", style: "border-radius: 50%" %></span>
+      <% end %>
+
       <div class="show-btn-container">
         <% if current_user.movies.include?(@movie) %>
-          <p>This movie is already in your Watch List</p>
+          <p>This movie is already in your Watchlist</p>
         <% else %>
           <%= link_to 'Add to Watchlist', movie_movie_selections_path(@movie), method: :post, class: "btn m-3 active-tab" %>
         <% end %>
@@ -25,3 +30,4 @@
   </div>
 
 </div>
+

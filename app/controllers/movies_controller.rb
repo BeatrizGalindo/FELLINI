@@ -1,8 +1,9 @@
 class MoviesController < ApplicationController
   def index
-    platform = params["platform"]
-    if platform
-      @movies = Movie.where(platform: platform)
+    if params.has_key?("platform")
+      @movies = Movie.with_platform(params["platform"])
+    elsif params.has_key?("query")
+      @movies = Movie.where("title ILIKE ?", "%#{params[:query]}%")
     else
       @movies = Movie.all
     end
