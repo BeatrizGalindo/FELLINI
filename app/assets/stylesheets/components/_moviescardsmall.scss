@@ -34,7 +34,13 @@
 
 .absolute {
   position: absolute;
-  top: 10px;
+  top: -10px;
+  left: 130px;
+}
+
+.absolutestar{
+  position: absolute;
+  top: 0px;
   left: 120px;
 }
 
