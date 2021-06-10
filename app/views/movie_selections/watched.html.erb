@@ -1,5 +1,5 @@
-<h1>Already watched...</h1>
 <div class="container">
+  <!-- <h1>Already watched...</h1> -->
   <div class="row justify-content-center">
     <div class="div.col-md-6">
       <%= link_to 'Watchlist', movie_selections_path, class: "btn m-3 " %>
@@ -9,11 +9,25 @@
 </div>
 
 
-<div class= "card-space">
-  <div class="cards">
+<div class= "smallcard-space">
+  <div class="smallcards">
+
     <% @movie_selections.each do |movie_selection| %>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path movie_selection.movie.poster.key %>)">
+
+
+      <div class="smallcard-category relative" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path movie_selection.movie.poster.key %>)">
+
+        <div class="absolute">
+        <%= link_to movie_selection_path(movie_selection), method: :put do %>
+        <i class="fas fa-star iconstyle"></i>
+        <% end %>
         </div>
+      </div>
     <% end %>
   </div>
 </div>
+
+
+
+
+<div class="HeartAnimation"></div>

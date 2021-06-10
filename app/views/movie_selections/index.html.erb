@@ -1,5 +1,5 @@
-<h1>Watchlist...</h1>
 <div class="container">
+  <!-- <h1>Watchlist...</h1> -->
   <div class="row justify-content-center">
     <div class="div.col-md-6">
       <%= link_to  'Watchlist', movie_selections_path, class: "btn m-3 active-tab" %>
@@ -12,16 +12,28 @@
 <div class= "smallcard-space">
   <div class="smallcards">
 
-    <% @movie_selections.each do |movie_selection| %>
-      <div class="smallcard-category relative" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path movie_selection.movie.poster.key %>)">
-      </div>
-      <div class="absolute">
-        <%= link_to '👁', movie_selection_path(movie_selection), method: :put %>
-      </div>
+      <% @movie_selections.each do |movie_selection| %>
 
+
+        <div class="smallcard-category relative" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path movie_selection.movie.poster.key %>)">
+
+        <div class="absolute">
+        <%= link_to movie_selection_path(movie_selection), method: :put do %>
+        <i class="fas fa-bookmark"></i>
+        <% end %>
+        </div>
+      </div>
     <% end %>
-
   </div>
 </div>
 
 
+
+        <!-- alert -->
+        <div class="flash flash-success alert alert-dismissible fade show" role="alert">
+          <span><strong>Yay!</strong> 🎉 this movie is in yours already watched list</span>
+          <a data-dismiss="alert" aria-label="Close">
+            <i class="fas fa-times"></i>
+          </a>
+        </div>
+        <!-- alert -->
