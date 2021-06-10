@@ -16,7 +16,7 @@
 }
 
 .smallcard-category:hover {
-  box-shadow: 0 0 5px rgba(255,255,255,0.8);
+  // box-shadow: 0 0 5px rgba(255,255,255,0.8);
 }
 
 
@@ -34,8 +34,20 @@
 
 .absolute {
   position: absolute;
-  top: 10px;
+  top: -10px;
+  left: 130px;
+}
+
+.absolutestar{
+  position: absolute;
+  top: 0px;
   left: 120px;
+}
+
+.absoluteheart{
+  position: absolute;
+  top: -5px;
+  left: 110px;
 }
 
 .relative {

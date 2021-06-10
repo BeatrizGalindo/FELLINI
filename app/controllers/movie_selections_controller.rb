@@ -7,9 +7,13 @@ class MovieSelectionsController < ApplicationController
     @movie_selections = current_user.movie_selections.where(watched: true)
   end
 
+  def favourites
+    @movie_selections = current_user.movie_selections.where(favourite: true)
+  end
+
   def update
     @movie_selection = MovieSelection.find(params[:id])
-    @movie_selection.toggle!(:watched)
+    @movie_selection.toggle!(params[:attribute])
     redirect_to movie_selections_path
   end
 

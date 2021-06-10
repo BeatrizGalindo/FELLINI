@@ -1,9 +1,10 @@
 .movie-title {
-  font-size: 72px;
+  font-size: 30px;
 }
 
 .movie-director {
-  margin-bottom: 35px;
+  margin-bottom: 15px;
+  font-size: 18px;
 }
 
 .show-info {
@@ -11,6 +12,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  font-size: 15px;
+
 }
 
 .movie-poster-show {

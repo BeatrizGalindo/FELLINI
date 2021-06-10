@@ -1,28 +1,32 @@
  <div class="container">
   <div class="search-bar-header">
-    <h1>Find your new favourite...</h1>
-      <%= form_tag movies_path, method: :get do %>
-        <div class="search-bar d-flex">
-          <%= text_field_tag :query,
-            params[:query],
-              class: "form-control",
-              style: "width: 1000px" %>
-          <%= submit_tag "Search", class: "btn ml-3" %>
-        </div>
-      <% end %>
+    <h1>Find your next movie to whatch...</h1>
+
+      <div class="positionleft">
+        <%= form_tag movies_path, method: :get do %>
+          <div class="search-bar d-flex">
+            <%= text_field_tag :query,
+              params[:query],
+                class: "form-control",
+                style: "width: 500px" %>
+            <%= submit_tag "Search", class: "btn ml-3 active-tab" %>
+          </div>
+        <% end %>
+      </div>
+
   </div>
 
 
     <div class="platform container">
-
-    <div class="btn-container btn-sticky">
-      <% Movie.platform.values.each do |platform| %>
-        <%= link_to movies_path(platform: platform) do %>
-          <span class="platform-btn m-3"><%= image_tag("#{platform}.jpg")%></span>
+    <div class="platformfixed">
+      <div class="btn-container btn-sticky">
+        <% Movie.platform.values.each do |platform| %>
+          <%= link_to movies_path(platform: platform) do %>
+            <span class="platform-btn m-3"><%= image_tag("#{platform}.jpg")%></span>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
-
       <div class="movie-list container">
         <div class= "card-space">
           <div class="cards">

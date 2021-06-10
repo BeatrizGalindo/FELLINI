@@ -5,14 +5,47 @@
       <%= image_tag @movie.poster, alt: "", class: "movie-poster-show" %>
     </div>
     <div class="show-details">
-      <!-- title, description, director, cast, year, runtime, genre, rating AND platform -->
       <h1 class="movie-title"> <%= @movie.title %> </h1>
-      <h4 class="movie-director"> <%=  @movie.director %> </h4>
+      <br>
+      <h4 class="movie-director"> <i class="fas fa-video"></i> <%=  @movie.director %> </h4>
+      <p> <i class="fas fa-clock"></i> <%= @movie.runtime %> min </p>
+      <p> <i class="fas fa-hourglass"></i> <%= @movie.year %> </p>
       <p> <%= @movie.description %> </p>
-      <p> <%= @movie.year %> </p>
-      <p> <%= @movie.runtime %> min </p>
-      <p> <%= @movie.genre %> </p>
+      <p class="btn-gender"> <%= @movie.genre %> </p>
       <p> Rating Metascore: <%= @movie.rating %> </p>
+
+
+
+
+
+      <!-- option 1 -->
+      <div class="w3-light-grey w3-round-xlarge">
+      <div class="w3-container w3-blue w3-round-xlarge" style="width:<%= @movie.rating %>%"><%= @movie.rating %>%</div>
+      </div>
+      <br>
+
+      <!-- option 2 -->
+      <div class="progress">
+        <span class="progress-bar" style="width: <%= @movie.rating %>%"></span>
+      </div>
+      <br>
+
+      <!-- option 3 -->
+
+      <div class="chart">
+          <div class="bar"></div>
+          <span id="value1"><%= @movie.rating %></span>
+      <br>
+      </div>
+
+        <!-- trailer -->
+      <br>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/BFwGqLa_oAo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
+
+
       <p><strong>Available on:</strong></p>
 
       <%= link_to movies_path(platform: @movie.platform) do %>
@@ -23,7 +56,7 @@
         <% if current_user.movies.include?(@movie) %>
           <p>This movie is already in your Watchlist</p>
         <% else %>
-          <%= link_to 'Add to Watchlist', movie_movie_selections_path(@movie), method: :post, class: "btn btn-ghost m-3 show-btn" %>
+          <%= link_to 'Add to Watchlist', movie_movie_selections_path(@movie), method: :post, class: "btn m-3 active-tab" %>
         <% end %>
       </div>
     </div>

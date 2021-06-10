@@ -1,0 +1,96 @@
+// option 1
+
+.body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+}
+
+.progress {
+  width: 100%;
+  max-width: 260px;
+  height: 6px;
+  background: #e1e4e8;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg,#ffd33d,#ea4aaa 17%,#b34bff 34%,#01feff 51%,#ffd33d 68%,#ea4aaa 85%,#b34bff);
+  background-size: 300% 100%;
+  animation: progress-animation 2s linear infinite;
+}
+
+@keyframes progress-animation
+  0%
+    background-position: 100%
+  100%
+    background-position: 0
+
+
+
+
+// option 2
+
+
+.w3-blue,.w3-hover-blue:hover{color:#fff!important;background-color:$blue!important}
+
+
+// option 3
+
+.bodyprogress {
+    justify-content: center;
+    align-items: center;
+    background: #111;
+    display: flex;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+.chart {
+    background: rgba(255, 255, 255, 0.1);
+    justify-content: flex-start;
+    border-radius: 100px;
+    align-items: center;
+    position: relative;
+    padding: 0 5px;
+    display: flex;
+    height: 40px;
+    width: 500px;
+}
+    .chart span {
+        /* You can modify the value below to change the distance between the percentage number and the bar */
+        margin-left: 5px;
+        color: $blue;
+        font-weight: bolder;
+    }
+
+.bar {
+    /* You can modify the total time used for the animation here */
+    animation: load 3s normal forwards;
+    /*
+    Add a little spice by having a shadow below the bar.
+    Feel free to comment out this line below to have an even LITE version :D
+    */
+    box-shadow: 0 10px 40px -10px $blue;
+
+    border-radius: 100px;
+    background: $blue;
+    height: 30px;
+    width: 0;
+}
+
+@keyframes load {
+    0% {
+        width: 0;
+    }
+    100% {
+        /* You need to change the percentage below to match the value in the corresponding <span> */
+        width: 68%;
+    }
+}

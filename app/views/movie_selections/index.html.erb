@@ -4,6 +4,7 @@
     <div class="div.col-md-6">
       <%= link_to  'Watchlist', movie_selections_path, class: "btn m-3 active-tab" %>
       <%= link_to  'Already watched', watched_movie_selections_path, class: "btn m-3" %>
+      <%= link_to  'Favourites', favourites_movie_selections_path, class: "btn m-3" %>
     </div>
   </div>
 </div>
@@ -18,8 +19,9 @@
         <div class="smallcard-category relative" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path movie_selection.movie.poster.key %>)">
 
         <div class="absolute">
-        <%= link_to movie_selection_path(movie_selection), method: :put do %>
-        <i class="fas fa-bookmark"></i>
+        <%= link_to movie_selection_path(movie_selection, attribute: :watched), method: :put do %>
+        <i class="fas fa-bookmark iconstyle"></i>
+
         <% end %>
         </div>
       </div>
@@ -29,11 +31,11 @@
 
 
 
-        <!-- alert -->
-        <div class="flash flash-success alert alert-dismissible fade show" role="alert">
-          <span><strong>Yay!</strong> 🎉 this movie is in yours already watched list</span>
-          <a data-dismiss="alert" aria-label="Close">
-            <i class="fas fa-times"></i>
-          </a>
-        </div>
-        <!-- alert -->
+<!-- alert -->
+<div class="flash flash-success alert alert-dismissible fade show" role="alert">
+  <span><strong>Yay!</strong> 🎉 this movie has been added</span>
+  <a data-dismiss="alert" aria-label="Close">
+    <i class="fas fa-times"></i>
+  </a>
+</div>
+<!-- alert -->
