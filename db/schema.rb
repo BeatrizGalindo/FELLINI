@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_08_113625) do
+ActiveRecord::Schema.define(version: 2021_06_10_155349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2021_06_08_113625) do
     t.boolean "watched", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "favourite", default: false
     t.index ["movie_id"], name: "index_movie_selections_on_movie_id"
     t.index ["user_id"], name: "index_movie_selections_on_user_id"
   end

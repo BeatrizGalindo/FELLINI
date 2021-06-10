@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   end
   resources :movie_selections, only: [:index, :update]
   get '/movie_selections/watched', to: 'movie_selections#watched', as: 'watched_movie_selections'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get '/movie_selections/favourites', to: 'movie_selections#favourites', as: 'favourites_movie_selections'
 end
