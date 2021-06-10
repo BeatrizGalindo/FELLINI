@@ -2,7 +2,7 @@
   background-size: cover;
   background-position: center;
   display: flex;
-  height: 200px;
+  height: 250px;
   width: 150px;
   flex-grow: 1;
   justify-content: center;
@@ -31,6 +31,20 @@
 }
 
 // Another style
+
+.absolute {
+  position: absolute;
+  top: 10px;
+  left: 120px;
+}
+
+.relative {
+  position: relative;
+}
+
+
+
+
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {

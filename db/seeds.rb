@@ -30,7 +30,7 @@ puts "Created 5 Random Users"
 # then we save it
 platforms = Movie.platform.values
 
-20.times do
+30.times do
   movie_title = Faker::Movie.unique.title
   url = "http://www.omdbapi.com/?t=#{movie_title}&apikey=#{ENV['OMDB_KEY']}"
   response = JSON.parse(URI.open(url).read)

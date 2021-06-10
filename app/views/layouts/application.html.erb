@@ -13,9 +13,10 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-<!--     <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p> -->
+
+    <div style= "min-height:calc(100vh - 116px)">
     <%= yield %>
+    </div>
 
       <!-- footer -->
     </div>
@@ -33,3 +34,5 @@
 
   </body>
 </html>
+
+
