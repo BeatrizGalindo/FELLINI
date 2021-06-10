@@ -6,7 +6,8 @@
 .platform-btn {
   display: flex;
   flex-direction: column;
-  width: 50px;
+  width: 40px;
+  border-radius: 20%;
 }
 
 .btn-primary {
@@ -22,4 +23,9 @@
 .btn-sticky {
   // position: sticky;
   // position: 50;
+}
+
+.platformfixed {
+  position: fixed;
+  left: 150px;
 }

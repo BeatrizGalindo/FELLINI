@@ -2,7 +2,7 @@
   background-size: cover;
   background-position: center;
   display: flex;
-  height: 340px;
+  height: 360px;
   flex-grow: 1;
   justify-content: center;
   align-items: center;
@@ -30,6 +30,15 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 16px;
+}
+
+
+
+
+
+.positionleft{
+  position: relative;
+  left: 380px;
 }
 
 // Another style
