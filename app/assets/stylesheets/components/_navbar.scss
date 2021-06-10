@@ -16,3 +16,9 @@
 .nav-link {
   color: $light-gray !important;
 }
+
+.navbar {
+  padding: 5px 30px;
+  position: sticky;
+  top: 0;
+}

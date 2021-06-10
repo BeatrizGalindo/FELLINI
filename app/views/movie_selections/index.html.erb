@@ -9,14 +9,12 @@
 </div>
 
 
-<div class= "card-space">
-  <div class="cards">
+<div class= "smallcard-space">
+  <div class="smallcards">
     <% @movie_selections.each do |movie_selection| %>
-
-      <%#= movie_selection.movie.title %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path movie_selection.movie.poster.key %>)">
+      <div class="smallcard-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path movie_selection.movie.poster.key %>)">
       </div>
-      <%= link_to 'marked as watched', movie_selection_path(movie_selection), method: :put %>
+      <%= link_to '👁', movie_selection_path(movie_selection), method: :put %>
     <% end %>
   </div>
 </div>
