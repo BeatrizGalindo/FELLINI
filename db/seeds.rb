@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'open-uri'
 require 'faker'
+MovieSelection.destroy_all
 Movie.destroy_all
 User.destroy_all
 
@@ -34,6 +35,7 @@ platforms = Movie.platform.values
   movie_title = Faker::Movie.unique.title
   url = "http://www.omdbapi.com/?t=#{movie_title}&apikey=#{ENV['OMDB_KEY']}"
   response = JSON.parse(URI.open(url).read)
+  next if response["Response"] == "False"
 
   movie = Movie.new(
     title: response["Title"],
@@ -50,4 +52,4 @@ platforms = Movie.platform.values
   movie.save!
 end
 
-puts "Created 10 movies"
+puts "Created #{Movie.count} movies"
