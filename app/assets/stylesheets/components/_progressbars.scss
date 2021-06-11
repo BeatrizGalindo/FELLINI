@@ -42,13 +42,3 @@
     height: 30px;
     width: 0;
 }
-
-@keyframes load {
-    0% {
-        width: 0;
-    }
-    100% {
-        /* You need to change the percentage below to match the value in the corresponding <span> */
-        width: 68%;
-    }
-}
