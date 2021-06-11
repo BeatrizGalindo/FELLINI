@@ -20,9 +20,12 @@
     <div class="platformfixed">
       <div class="btn-container btn-sticky">
         <% Movie.platform.values.each do |platform| %>
-          <%= link_to movies_path(platform: platform) do %>
-            <span class="platform-btn m-3"><%= image_tag "#{platform}.jpg", style: "border-radius: 5px"%></span>
-          <% end %>
+          <div class="logo">
+            <!-- <div class="square overlay"></div> -->
+            <%= link_to movies_path(platform: platform) do %>
+              <span class="platform-btn mb-3"><%= image_tag "#{platform}.jpg", style: "border-radius: 5px", class: "icon-image #{'icon-show' if params[:platform] == platform }"%></span>
+            <% end %>
+          </div>
         <% end %>
       </div>
     </div>

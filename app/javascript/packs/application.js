@@ -46,17 +46,12 @@ document.addEventListener('turbolinks:load', () => {
   if (document.getElementById("value1") !== null) {
     increase();
   }
-
   $(function() {
     $(".HeartAnimation").mouseover(function() {
       $(this).toggleClass("animate");
     });
   });
 });
-
-
-
-
 
 // progress bar option 3
 
