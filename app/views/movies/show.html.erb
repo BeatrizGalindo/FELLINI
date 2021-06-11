@@ -1,9 +1,27 @@
 <div class="container">
 
   <div class="show-info d-flex">
-    <div class="show-poster d-flex">
-      <%= image_tag @movie.poster, alt: "", class: "movie-poster-show" %>
+
+    <div class= mr-4>
+      <!-- Add btn -->
+      <div class="show-btn-container d-flex justify-content-center">
+        <% if current_user.movies.include?(@movie) %>
+          <p>This movie is already in your Watchlist !</p>
+        <% else %>
+          <%= link_to 'Add to Watchlist', movie_movie_selections_path(@movie), method: :post, class: "btn m-3 active-tab" %>
+        <% end %>
+      </div>
+      <!-- Add btn -->
+
+      <!-- poster -->
+      <div class="show-poster d-flex">
+        <%= image_tag @movie.poster, alt: "", class: "movie-poster-show" %>
+      </div>
+      <!-- poster -->
     </div>
+
+
+
     <div class="show-details">
       <h1 class="movie-title"> <%= @movie.title %> </h1>
       <br>
@@ -11,41 +29,29 @@
       <p> <i class="fas fa-clock"></i> <%= @movie.runtime %> min </p>
       <p> <i class="fas fa-hourglass"></i> <%= @movie.year %> </p>
       <p> <%= @movie.description %> </p>
-      <div class= "d-flex justify-content-between">
+
+
+      <div class= "d-flex align-items-center">
         <p class="btn-gender"> <%= @movie.genre %> </p>
-
-        <p><strong>Available on:</strong></p>
-
         <%= link_to movies_path(platform: @movie.platform) do %>
           <span class="platform-btn m-3"><%= image_tag "#{@movie.platform}.jpg", style: "border-radius: 50%" %></span>
         <% end %>
-
       </div>
 
 
-      <!-- option 3 -->
-
+      <!-- progress bar -->
       <div class="chart">
           <div class="bar"></div>
           <span id="value1"><%= @movie.rating %></span>
       <br>
       </div>
+      <!-- progress bar -->
 
-        <!-- trailer -->
+      <!-- trailer -->
       <br>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/BFwGqLa_oAo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe width="550" height="300" src="https://www.youtube.com/embed/BFwGqLa_oAo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <!-- trailer -->
 
-
-
-
-
-      <div class="show-btn-container">
-        <% if current_user.movies.include?(@movie) %>
-          <p>This movie is already in your Watchlist</p>
-        <% else %>
-          <%= link_to 'Add to Watchlist', movie_movie_selections_path(@movie), method: :post, class: "btn m-3 active-tab" %>
-        <% end %>
-      </div>
     </div>
   </div>
 

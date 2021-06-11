@@ -22,7 +22,7 @@ class MovieSelectionsController < ApplicationController
     @movie_selection = MovieSelection.new(user: current_user, movie: @movie)
 
     if @movie_selection.save
-      redirect_to movie_selections_path
+      redirect_to movie_selections_path, notice: "Yay! 🎉 this movie has been added"
     else
       redirect_to movies_path
     end

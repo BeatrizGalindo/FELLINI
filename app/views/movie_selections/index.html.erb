@@ -13,29 +13,18 @@
 <div class= "smallcard-space">
   <div class="smallcards">
 
-      <% @movie_selections.each do |movie_selection| %>
-
-
+    <% @movie_selections.each do |movie_selection| %>
+    <div class= "d-flex flex-column align-items-center">
         <div class="smallcard-category relative" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path movie_selection.movie.poster.key %>)">
-
-        <div class="absolute">
-        <%= link_to movie_selection_path(movie_selection, attribute: :watched), method: :put do %>
-        <i class="fas fa-bookmark iconstyle"></i>
-
-        <% end %>
         </div>
-      </div>
-    <% end %>
+        <%= link_to movie_selection_path(movie_selection, attribute: :watched), method: :put do %>
+          <p class="text-center "> Add to watched list</p>
+          <% end %>
+        </div>
+      <% end %>
   </div>
 </div>
 
 
 
-<!-- alert -->
-<div class="flash flash-success alert alert-dismissible fade show" role="alert">
-  <span><strong>Yay!</strong> 🎉 this movie has been added</span>
-  <a data-dismiss="alert" aria-label="Close">
-    <i class="fas fa-times"></i>
-  </a>
-</div>
-<!-- alert -->
+
