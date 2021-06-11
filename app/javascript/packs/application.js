@@ -31,14 +31,14 @@ import "bootstrap";
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-});
-
-
-$(function() {
-  $(".HeartAnimation").click(function() {
-    $(this).toggleClass("animate");
+  $(function() {
+    $(".HeartAnimation").mouseover(function() {
+      $(this).toggleClass("animate");
+    });
   });
 });
+
+
 
 
 
