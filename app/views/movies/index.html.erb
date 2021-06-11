@@ -1,14 +1,13 @@
  <div class="container">
   <div class="search-bar-header">
-    <h1>Find your next movie to whatch...</h1>
+    <h1>Find your next <strong>favourite</strong> movie...</h1>
 
       <div class="positionleft">
         <%= form_tag movies_path, method: :get do %>
           <div class="search-bar d-flex">
             <%= text_field_tag :query,
               params[:query],
-                class: "form-control",
-                style: "width: 500px" %>
+              class: "form-control" %>
             <%= submit_tag "Search", class: "btn ml-3 active-tab" %>
           </div>
         <% end %>
@@ -22,7 +21,7 @@
       <div class="btn-container btn-sticky">
         <% Movie.platform.values.each do |platform| %>
           <%= link_to movies_path(platform: platform) do %>
-            <span class="platform-btn m-3"><%= image_tag("#{platform}.jpg")%></span>
+            <span class="platform-btn m-3"><%= image_tag "#{platform}.jpg", style: "border-radius: 5px"%></span>
           <% end %>
         <% end %>
       </div>
