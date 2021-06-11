@@ -11,24 +11,17 @@
       <p> <i class="fas fa-clock"></i> <%= @movie.runtime %> min </p>
       <p> <i class="fas fa-hourglass"></i> <%= @movie.year %> </p>
       <p> <%= @movie.description %> </p>
-      <p class="btn-gender"> <%= @movie.genre %> </p>
-      <p> Rating Metascore: <%= @movie.rating %> </p>
+      <div class= "d-flex justify-content-between">
+        <p class="btn-gender"> <%= @movie.genre %> </p>
 
+        <p><strong>Available on:</strong></p>
 
+        <%= link_to movies_path(platform: @movie.platform) do %>
+          <span class="platform-btn m-3"><%= image_tag "#{@movie.platform}.jpg", style: "border-radius: 50%" %></span>
+        <% end %>
 
-
-
-      <!-- option 1 -->
-      <div class="w3-light-grey w3-round-xlarge">
-      <div class="w3-container w3-blue w3-round-xlarge" style="width:<%= @movie.rating %>%"><%= @movie.rating %>%</div>
       </div>
-      <br>
 
-      <!-- option 2 -->
-      <div class="progress">
-        <span class="progress-bar" style="width: <%= @movie.rating %>%"></span>
-      </div>
-      <br>
 
       <!-- option 3 -->
 
@@ -45,12 +38,6 @@
 
 
 
-
-      <p><strong>Available on:</strong></p>
-
-      <%= link_to movies_path(platform: @movie.platform) do %>
-        <span class="platform-btn m-3"><%= image_tag "#{@movie.platform}.jpg", style: "border-radius: 50%" %></span>
-      <% end %>
 
       <div class="show-btn-container">
         <% if current_user.movies.include?(@movie) %>
