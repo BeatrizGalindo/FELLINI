@@ -14,7 +14,7 @@ class MovieSelectionsController < ApplicationController
   def update
     @movie_selection = MovieSelection.find(params[:id])
     @movie_selection.toggle!(params[:attribute])
-    redirect_to movie_selections_path
+    redirect_to redirection_path(params[:attribute])
   end
 
   def create
@@ -22,10 +22,20 @@ class MovieSelectionsController < ApplicationController
     @movie_selection = MovieSelection.new(user: current_user, movie: @movie)
 
     if @movie_selection.save
-      redirect_to movie_selections_path
+      redirect_to movie_selections_path, notice: "Yay! 🎉 this movie has been added"
     else
       redirect_to movies_path
     end
   end
 
+  private
+
+  def redirection_path(attribute)
+    case attribute
+    when "watched" then watched_movie_selections_path
+    when "favourite" then favourites_movie_selections_path
+    end
+  end
+
 end
+
