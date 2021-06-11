@@ -1,3 +1,9 @@
+<style type="text/css">
+  @keyframes load {
+    0% { width: 0; }
+    100% { width: <%= @movie.rating %>%; }
+  }
+</style>
 <div class="container">
 
   <div class="show-info d-flex">
@@ -10,6 +16,7 @@
         <% else %>
           <%= link_to 'Add to Watchlist', movie_movie_selections_path(@movie), method: :post, class: "btn m-3 active-tab" %>
         <% end %>
+
       </div>
       <!-- Add btn -->
 
