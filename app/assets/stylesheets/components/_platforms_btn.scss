@@ -1,13 +1,23 @@
 .btn-container {
   display: inline-block;
   margin-top: 4px;
+  margin-left: -14px;
+}
+
+.overlay {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: grey;
+  opacity: 50%;
+  z-index: 5;
+  border-radius: 4px;
 }
 
 .platform-btn {
   display: flex;
   flex-direction: column;
   width: 40px;
-  border-radius: 50%;
 }
 
 .btn-primary {
@@ -29,3 +39,13 @@
   position: fixed;
   left: 150px;
 }
+
+// .platform-btn:hover {
+//   .overlay {
+//   display: none;
+//   z-index: 1;
+//   }
+// }
+
+
+
