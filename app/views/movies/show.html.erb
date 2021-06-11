@@ -40,8 +40,9 @@
 
         <!-- trailer -->
       <br>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/BFwGqLa_oAo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+      <% if @movie.youtube_id.present? %>
+        <iframe width="560" height="315" src="<%= "https://www.youtube.com/embed/#{@movie.youtube_id}" %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <% end %>
 
 
 

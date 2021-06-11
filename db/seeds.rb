@@ -32,9 +32,9 @@ puts "Created 5 Random Users"
 # then we save it
 platforms = Movie.platform.values
 
-30.times do
-  movie_title = CGI.escape(Faker::Movie.unique.title)
-  url = "http://www.omdbapi.com/?t=#{movie_title}&apikey=#{ENV['OMDB_KEY']}"
+150.times do
+  movie_title = Faker::Movie.unique.title
+  url = "http://www.omdbapi.com/?t=#{CGI.escape(movie_title)}&apikey=#{ENV['OMDB_KEY']}"
   response = JSON.parse(URI.open(url).read)
   next if response["Response"] == "False"
 
@@ -46,7 +46,8 @@ platforms = Movie.platform.values
     rating: response["Metascore"],
     genre: response["Genre"],
     runtime: response["Runtime"],
-    platform: platforms.sample
+    platform: platforms.sample,
+    youtube_id: YOUTUBE_TRAILER_IDS[movie_title.to_sym]
   )
   poster_file = URI.open(response["Poster"])
   movie.poster.attach(io: poster_file, filename: response["Title"], content_type: 'image/png')
