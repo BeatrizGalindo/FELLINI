@@ -70,6 +70,17 @@ ActiveRecord::Schema.define(version: 2021_06_14_091706) do
     t.string "youtube_id"
   end
 
+  create_table "recommendations", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "recommendee_id"
+    t.bigint "movie_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["movie_id"], name: "index_recommendations_on_movie_id"
+    t.index ["recommendee_id"], name: "index_recommendations_on_recommendee_id"
+    t.index ["user_id"], name: "index_recommendations_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -89,4 +100,5 @@ ActiveRecord::Schema.define(version: 2021_06_14_091706) do
   add_foreign_key "friends", "users", column: "friend_id"
   add_foreign_key "movie_selections", "movies"
   add_foreign_key "movie_selections", "users"
+  add_foreign_key "recommendations", "users", column: "recommendee_id"
 end

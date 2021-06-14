@@ -7,6 +7,9 @@ class User < ApplicationRecord
   has_many :movies, through: :movie_selections
   has_many :friends
   has_many :other_friends, class_name: "Friend", foreign_key: "friend_id"
+  has_many :recommendations
+  has_many :recommended, class_name: "Recommendation", foreign_key: :recommendee_id
+  has_many :recommended_movies, through: :recommended, source: :movie
 
   def all_friends
     friends + other_friends
