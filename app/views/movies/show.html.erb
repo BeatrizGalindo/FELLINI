@@ -9,16 +9,20 @@
   <div class="show-info d-flex">
 
     <div class= mr-4>
-      <!-- Add btn -->
-      <div class="show-btn-container d-flex justify-content-center">
+
+      <!-- Add btn 👇🏻-->
+      <div class="show-btn-container d-flex justify-content-around">
         <% if current_user.movies.include?(@movie) %>
           <p>This movie is already in your Watchlist !</p>
         <% else %>
           <%= link_to 'Add to Watchlist', movie_movie_selections_path(@movie), method: :post, class: "btn m-3 active-tab" %>
         <% end %>
-
       </div>
-      <!-- Add btn -->
+      <!-- Add recommendation btn 👇🏻-->
+      <div class="show-btn-container d-flex justify-content-around">
+          <%= link_to 'Recommend to a friend', movie_movie_selections_path(@movie), method: :post, class: "btn m-3 active-tab" %>
+      </div>
+
 
       <!-- poster -->
       <div class="show-poster d-flex">
