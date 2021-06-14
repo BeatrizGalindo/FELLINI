@@ -15,8 +15,12 @@
 
     <% @movie_selections.each do |movie_selection| %>
     <div class= "d-flex flex-column align-items-center">
-        <div class="smallcard-category relative" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path movie_selection.movie.poster.key %>)">
-        </div>
+        <%= link_to movie_path(movie_selection.movie) do %>
+          <div class="smallcard-category relative" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path movie_selection.movie.poster.key %>)">
+          </div>
+        <% end %>
+
+
         <%= link_to movie_selection_path(movie_selection, attribute: :watched), method: :put do %>
           <p class="text-center "> Add to watched list</p>
           <% end %>
