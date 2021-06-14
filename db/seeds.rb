@@ -9,6 +9,7 @@ require 'open-uri'
 require 'faker'
 
 MovieSelection.destroy_all
+Recommendation.destroy_all
 Movie.destroy_all
 User.destroy_all
 
@@ -32,7 +33,7 @@ puts "Created 5 Random Users"
 # then we save it
 platforms = Movie.platform.values
 
-190.times do
+5.times do
   movie_title = Faker::Movie.unique.title
 
   url = "http://www.omdbapi.com/?t=#{CGI.escape(movie_title)}&apikey=#{ENV['OMDB_KEY']}"

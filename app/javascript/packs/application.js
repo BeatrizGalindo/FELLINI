@@ -24,9 +24,10 @@ require("channels")
 
 // External imports
 import "bootstrap";
-
+import "hammerjs";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { initCards } from './tinder';
 function increase() {
     // Change the variable to modify the speed of the number increasing from 0 to (ms)
     let SPEED = 40;
@@ -46,16 +47,16 @@ document.addEventListener('turbolinks:load', () => {
   if (document.getElementById("value1") !== null) {
     increase();
   }
-  $(function() {
+    initCards();
+    $(function() {
     $(".HeartAnimation").mouseover(function() {
       $(this).toggleClass("animate");
     });
   });
 });
 
-// progress bar option 3
 
-// Github verson (1 file .html): https://github.com/Soooda/progress_bar_lite/blob/master/index.html
+
 
 
 
