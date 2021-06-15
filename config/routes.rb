@@ -17,4 +17,16 @@ Rails.application.routes.draw do
     resources :friends, only: [:create]
   end
   resources :recommendations, only: [:index, :destroy]
+
+
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :recommendations, only: [ :destroy ] do
+        member do
+          get :watch
+        end
+      end
+    end
+  end
+
 end
