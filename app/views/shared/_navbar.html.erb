@@ -19,7 +19,7 @@
           <%= link_to "My watchlist", movie_selections_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Recommendations", "#", data:{toggle: "modal", target: "#exampleModal"}, class: "nav-link" %>
+          <%= link_to "Recommendations", "#", data:{toggle: "modal", target: "#recommendModal"}, class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "My friends", "http://gph.is/2uoaGww", target:"_blank", class: "nav-link" %>
@@ -53,46 +53,48 @@
 
 <!-- Button trigger modal -->
 
+<% if user_signed_in? %>
+  <!-- Modal -->
+  <div class="modal fade" id="recommendModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
+  <!-- TINDER -->
 
-<!-- TINDER -->
+          <div class="tinder">
+            <div class="tinder--status">
+              <i class="fa fa-remove"></i>
+              <i class="fa fa-heart"></i>
+            </div>
 
-        <div class="tinder">
-          <div class="tinder--status">
-            <i class="fa fa-remove"></i>
-            <i class="fa fa-heart"></i>
+            <div class="tinder--cards">
+              <% current_user.recommended.each do |recommendation| %>
+                <div class="tinder--card" data-url="<%= watch_api_v1_recommendation_url(recommendation) %>" data-destroy="<%= api_v1_recommendation_url(recommendation) %>">
+                  <img src="<%= image_tag recommendation.movie.poster, alt: "", class: "movie-poster-show" %>">
+                  <h3><%= recommendation.movie.title %></h3>
+                  <p><%= recommendation.movie.description %></p>
+                </div>
+              <% end %>
+              <% if current_user.recommended.empty? %>
+                <div class="tinder--card">
+                  <img src="">
+                  <h3>You don't have any recommended movoes</h3>
+                  <p>Try making some friends</p>
+                </div>
+              <% end %>
+            </div>
+
+            <div class="tinder--buttons">
+              <button id="nope"><i class="fa fa-times"></i></button>
+              <button id="love"><i class="fas fa-eye"></i></button>
+            </div>
           </div>
 
-          <div class="tinder--cards">
-            <% current_user.recommended.each do |recommendation| %>
-              <div class="tinder--card" data-url="<%= watch_api_v1_recommendation_url(recommendation) %>">
-                <img src="<%= image_tag recommendation.movie.poster, alt: "", class: "movie-poster-show" %>">
-                <h3><%= recommendation.movie.title %></h3>
-                <p><%= recommendation.movie.description %></p>
-              </div>
-            <% end %>
-            <% if current_user.recommended.empty? %>
-              <div class="tinder--card">
-                <img src="">
-                <h3>You don't have any recommended movoes</h3>
-                <p>Try making some friends</p>
-              </div>
-            <% end %>
-          </div>
-
-          <div class="tinder--buttons">
-            <button id="nope"><i class="fa fa-times"></i></button>
-            <button id="love"><i class="fas fa-eye"></i></button>
-          </div>
+  <!-- END TINDER -->
         </div>
-
-<!-- END TINDER -->
       </div>
     </div>
   </div>
-</div>
+<% end %>
+

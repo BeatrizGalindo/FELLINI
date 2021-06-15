@@ -81,6 +81,7 @@ export const initCards = () => {
 
       card.classList.add('removed');
       var url = card.dataset.url;
+      var dest_url = card.dataset.destroy
 
       if (love) {
         card.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';
@@ -95,6 +96,14 @@ export const initCards = () => {
         card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
         // write ajax call to destroy recommendation
         // api destroy call to destroy recommendation
+        console.log(dest_url);
+        fetch(dest_url, {
+          method: "DELETE"
+        })
+          .then(response => response.json())
+          .then((data) => {
+            console.log(data); // Look at local_names.default
+          });
       }
 
       initCards();
