@@ -109,7 +109,7 @@ YOUTUBE_TRAILER_IDS = {
   'Se7en': "znmZoVkCjpI",
   'Seven Samurai': "wJ1TOratCTo",
   'Sholay': "zzTUvWfvlBg",
-  'Shutter Island': "v8yrZSkKxTA&t=11s",
+  'Shutter Island': "5iaYLCiq5RM",
   'Snatch': "9Jar2XkBboo",
   'Some Like It Hot': "rI_lUHOCcbc",
   'Spirited Away': "ByXuk9QqQkk",
