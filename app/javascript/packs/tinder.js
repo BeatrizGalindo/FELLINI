@@ -82,8 +82,12 @@ export const initCards = () => {
 
       if (love) {
         card.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';
+        // write am ajax call to add recommendation to watchlist
+        // make api post call to creat watchlist
       } else {
         card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
+        // write ajax call to destroy recommendation
+        // api destroy call to destroy recommendation
       }
 
       initCards();

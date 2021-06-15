@@ -19,9 +19,7 @@
           <%= link_to "My watchlist", movie_selections_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Launch demo modal
-          </button>
+          <%= link_to "Recommendations", "#", data:{toggle: "modal", target: "#exampleModal"}, class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "My friends", "http://gph.is/2uoaGww", target:"_blank", class: "nav-link" %>
@@ -54,14 +52,8 @@
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
       <div class="modal-body">
 
 <!-- TINDER -->
@@ -73,44 +65,29 @@
           </div>
 
           <div class="tinder--cards">
-            <div class="tinder--card">
-              <img src="https://placeimg.com/600/300/people">
-              <h3>Demo card 1</h3>
-              <p>This is a demo for Tinder like swipe cards</p>
-            </div>
-            <div class="tinder--card">
-              <img src="https://placeimg.com/600/300/animals">
-              <h3>Demo card 2</h3>
-              <p>This is a demo for Tinder like swipe cards</p>
-            </div>
-            <div class="tinder--card">
-              <img src="https://placeimg.com/600/300/nature">
-              <h3>Demo card 3</h3>
-              <p>This is a demo for Tinder like swipe cards</p>
-            </div>
-            <div class="tinder--card">
-              <img src="https://placeimg.com/600/300/tech">
-              <h3>Demo card 4</h3>
-              <p>This is a demo for Tinder like swipe cards</p>
-            </div>
-            <div class="tinder--card">
-              <img src="https://placeimg.com/600/300/arch">
-              <h3>Demo card 5</h3>
-              <p>This is a demo for Tinder like swipe cards</p>
-            </div>
+            <% current_user.recommended.each do |recommendation| %>
+              <div class="tinder--card">
+                <img src="<%= image_tag recommendation.movie.poster, alt: "", class: "movie-poster-show" %>">
+                <h3><%= recommendation.movie.title %></h3>
+                <p><%= recommendation.movie.description %></p>
+              </div>
+            <% end %>
+            <% if current_user.recommended.empty? %>
+              <div class="tinder--card">
+                <img src="">
+                <h3>You don't have any recommended movoes</h3>
+                <p>Try making some friends</p>
+              </div>
+            <% end %>
           </div>
 
           <div class="tinder--buttons">
             <button id="nope"><i class="fa fa-times"></i></button>
-            <button id="love"><i class="fa fa-heart"></i></button>
+            <button id="love"><i class="fas fa-eye"></i></button>
           </div>
         </div>
 
-
 <!-- END TINDER -->
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
