@@ -65,31 +65,20 @@
           </div>
 
           <div class="tinder--cards">
-            <div class="tinder--card">
-              <img src="<%= image_tag @movie.poster, alt: "", class: "movie-poster-show" %>">
-              <h3><%= @movie.title %></h3>
-              <p><%= @movie.description %></p>
-            </div>
-            <div class="tinder--card">
-              <img src="https://placeimg.com/600/300/animals">
-              <h3><%= @movie.title %></h3>
-              <p><%= @movie.description %></p>
-            </div>
-            <div class="tinder--card">
-              <img src="https://placeimg.com/600/300/nature">
-              <h3><%= @movie.title %></h3>
-              <p><%= @movie.description %></p>
-            </div>
-            <div class="tinder--card">
-              <img src="https://placeimg.com/600/300/tech">
-              <h3><%= @movie.title %></h3>
-              <p><%= @movie.description %></p>
-            </div>
-            <div class="tinder--card">
-              <img src="https://placeimg.com/600/300/arch">
-              <h3><%= @movie.title %></h3>
-              <p><%= @movie.description %></p>
-            </div>
+            <% current_user.recommended.each do |recommendation| %>
+              <div class="tinder--card">
+                <img src="<%= image_tag recommendation.movie.poster, alt: "", class: "movie-poster-show" %>">
+                <h3><%= recommendation.movie.title %></h3>
+                <p><%= recommendation.movie.description %></p>
+              </div>
+            <% end %>
+            <% if current_user.recommended.empty? %>
+              <div class="tinder--card">
+                <img src="">
+                <h3>You don't have any recommended movoes</h3>
+                <p>Try making some friends</p>
+              </div>
+            <% end %>
           </div>
 
           <div class="tinder--buttons">
