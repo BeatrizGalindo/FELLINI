@@ -71,6 +71,7 @@ export const initCards = () => {
 
   function createButtonListener(love) {
     return function (event) {
+
       var cards = document.querySelectorAll('.tinder--card:not(.removed)');
       var moveOutWidth = document.body.clientWidth * 1.5;
 
@@ -79,11 +80,30 @@ export const initCards = () => {
       var card = cards[0];
 
       card.classList.add('removed');
+      var url = card.dataset.url;
+      var dest_url = card.dataset.destroy
 
       if (love) {
         card.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';
+        // write am ajax call to add recommendation to watchlist
+        // make api post call to creat watchlist
+        fetch(url)
+          .then(response => response.json())
+          .then((data) => {
+            console.log(data);
+          });
       } else {
         card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
+        // write ajax call to destroy recommendation
+        // api destroy call to destroy recommendation
+        console.log(dest_url);
+        fetch(dest_url, {
+          method: "DELETE"
+        })
+          .then(response => response.json())
+          .then((data) => {
+            console.log(data); // Look at local_names.default
+          });
       }
 
       initCards();
@@ -101,3 +121,4 @@ export const initCards = () => {
 
 
 // END TINDER
+
