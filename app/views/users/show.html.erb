@@ -1,11 +1,14 @@
-<div class="container">
-    <div class="box d-flex align-items-center">
-      <h1> <%= "#{current_user.first_name} #{current_user.last_name}" %> </h1>
-      <img class="avatar-large" alt="avatar-large" src="https://www.italymagazine.com/sites/default/files/story/fellini.jpg" />
-      <h3>Friends:</h3>
 
-    </div>
-      </div>
+<div class="box d-flex align-items-center">
+  <h1> <%= "#{current_user.first_name} #{current_user.last_name}" %> </h1>
+  <img class="avatar-large" alt="avatar-large" src=<%= "#{}" %> />
+  <p> <%= current_user.bio %> </p>
+  <%= link_to 'Friends', movies_path, class: "btn active-tab m-3" %>
+</div>
+
+
+
+
         <div class="user-list d-flex">
           <% @users.each do |user| %>
             <div class="user-card">
