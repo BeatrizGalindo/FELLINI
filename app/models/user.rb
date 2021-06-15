@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :recommendations
   has_many :recommended, class_name: "Recommendation", foreign_key: :recommendee_id
   has_many :recommended_movies, through: :recommended, source: :movie
+  has_one_attached :photo
 
   def all_friends
     friends + other_friends
