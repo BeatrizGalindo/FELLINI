@@ -69,20 +69,22 @@
             </div>
 
             <div class="tinder--cards">
-              <% current_user.recommended.each do |recommendation| %>
-                <div class="tinder--card" data-url="<%= watch_api_v1_recommendation_url(recommendation) %>" data-destroy="<%= api_v1_recommendation_url(recommendation) %>">
-                  <%= image_tag recommendation.movie.poster, alt: "", class: "movie-poster-show" %>
-                  <h3><%= recommendation.movie.title %></h3>
-                  <p><%= recommendation.movie.description %></p>
-                </div>
-              <% end %>
-              <% if current_user.recommended.empty? %>
-                <div class="tinder--card">
-                  <img src="">
-                  <h3>You don't have any recommended movies</h3>
-                  <p>Try making some friends</p>
-                </div>
-              <% end %>
+
+                <% current_user.recommended.each do |recommendation| %>
+                  <div class="tinder--card" data-url="<%= watch_api_v1_recommendation_url(recommendation) %>" data-destroy="<%= api_v1_recommendation_url(recommendation) %>">
+                    <%= image_tag recommendation.movie.poster, alt: "", class: "movie-poster-show" %>
+                    <h3><%= recommendation.movie.title %></h3>
+                    <p><%= recommendation.movie.description %></p>
+                  </div>
+                <% end %>
+                <% if current_user.recommended.empty? %>
+                  <div class="tinder--card">
+                    <img src="">
+                    <h3>You don't have any recommended movies</h3>
+                    <p>Try making some friends</p>
+                  </div>
+                <% end %>
+
             </div>
 
             <div class="tinder--buttons">

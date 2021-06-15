@@ -93,9 +93,10 @@
       <div class="modal-body">
         <%= simple_form_for [@movie, @recommendation] do |f|%>
           <%= f.association :recommendee, value_method: :id, label_method: :first_name %>
-          <div class="btn">
-          <%= f.submit %>
-          </div>
+
+          <%= f.submit class: "btn btn-reco" %>
+
+
         <% end %>
       </div>
 <!--       <div class="modal-footer">
