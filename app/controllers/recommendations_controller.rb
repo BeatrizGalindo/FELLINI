@@ -6,9 +6,18 @@ class RecommendationsController < ApplicationController
 
   def create
     @movie = Movie.find(params[:movie_id])
-    @recomendations = Recommendation.new(user: current_user, movie: @movie, recommendee: )
+    @recommendation = Recommendation.new(recommendation_parmams)
+    @recommendation.user = current_user
+    @recommendation.movie = @movie
+    @recommendation.save
+    flash[:notice] = "Movoe recommended to #{@recommendation.recommendee.first_name}"
+    redirect_back fallback_location: request.referrer
   end
 
   def destroy
+  end
+
+  def recommendation_parmams
+    params.require(:recommendation).permit(:recommendee_id)
   end
 end
