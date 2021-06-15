@@ -67,9 +67,13 @@ body {
 
 .tinder--card {
   display: inline-block;
-  width: 100%;
-  max-width: 400px;
-  height: 400px;
+  // width: 100%;
+  // max-width: 400px;
+
+  height: 450px;
+  width: 450px;
+  object-fit: cover;
+
   background: #2D333B;
   padding-bottom: 40px;
   border-radius: 8px;
@@ -146,12 +150,28 @@ body {
   color: #eaeaea;
 }
 
+
+// in navbar.html:
 .tinder-content {
   background: transparent;
 }
 
 
 .recommendation-content {
-  background: #2D333B;
+  background: $backsecondary;
 }
+
+// in show page of movie:
+.modal-recommend {
+  background: $backsecondary;
+}
+
+
+
+
+
+
+
+
+
 
