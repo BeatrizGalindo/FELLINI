@@ -1,8 +1,10 @@
 .user-list {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
 }
-
-.user-card {
-
+.f-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
