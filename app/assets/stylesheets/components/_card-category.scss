@@ -1,0 +1,41 @@
+.friend-card {
+  display: flex;
+  border: 1px solid #848484;
+  border-radius: 6px;
+  width: 300px;
+  height: 300px;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+
+.friend-card:hover {
+  box-shadow: 0 0 5px rgba(255,255,255,0.8);
+}
+
+.user-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.friend-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  text-decoration: none;
+}
+
+.friend-img:hover {
+  box-shadow: 0 0 5px rgba(255,255,255,0.8);
+  text-decoration: none;
+}
+
+.friend-link:hover {
+  text-decoration: none;
+}
+
+.friend-list {
+  display: flex;
+  justify-content: space-evenly;
+}

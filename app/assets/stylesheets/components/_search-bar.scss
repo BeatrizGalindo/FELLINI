@@ -18,6 +18,22 @@
   width: 891px;
   border-radius: 50px;
   align-items: center;
-  position: relative;
+  padding: 0px 10px;
+}
 
+.user-form-control:focus {
+  border-radius: 50px;
+  outline: none;
+  box-shadow: 0px 0px 2px blue;
+}
+
+.form-control-recommend {
+  width: 100%;
+  margin: 0px;
+  border-radius: 50px;
+}
+
+.form-control select {
+  width: 40px;
+  border-radius: 50px;
 }

@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   def index
     @friends = current_user.all_friend_people
-    if params[:search]
-      @users = User.where.not(id: current_user.id).where("first_name ILIKE ?", "%#{params[:search]}%")
+    if params[:query]
+      @users = User.where.not(id: current_user.id).where("first_name ILIKE ?", "%#{params[:query]}%")
     else
       @users = User.where.not(id: current_user.id)
     end
@@ -10,8 +10,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    if params[:search]
-      @users = User.where.not(id: current_user.id).where("first_name ILIKE ?", "%#{params[:search]}%")
+    if params[:query]
+      @users = User.where.not(id: current_user.id).where("first_name ILIKE ?", "%#{params[:query]}%")
     else
       @users = User.where.not(id: current_user.id)
     end
