@@ -10,7 +10,6 @@
         <div><h3>Friends recommended... </h3>
 
           <% @suggested_movies.each do |suggested_movie| %>
-
             <%= link_to movie_path(suggested_movie.movie) do  %>
               <div class="smallcard-category relative m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path suggested_movie.poster.key %>)">
               </div>
@@ -21,7 +20,6 @@
 
           <div class="d-flex">
             <% @recommended_movies.each do |recommended_movie| %>
-
               <%= link_to movie_path(recommended_movie) do  %>
                 <div class="smallcard-category relative m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path recommended_movie.poster.key %>)">
                 </div>
