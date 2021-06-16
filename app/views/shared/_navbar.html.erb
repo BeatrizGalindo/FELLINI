@@ -75,6 +75,8 @@
                     <%= image_tag recommendation.movie.poster, alt: "", class: "tinder--img" %>
                     <h3><%= recommendation.movie.title %></h3>
                     <p><%= recommendation.movie.description %></p>
+                    <p>Your friend <%= recommendation.user.first_name%> has recommended you this</p>
+                    <%= cl_image_tag recommendation.user.photo.key, class: "avatar", alt: "alttext" %>
                   </div>
                 <% end %>
                 <% if current_user.recommended.empty? %>
