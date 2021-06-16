@@ -49,11 +49,37 @@ document.addEventListener('turbolinks:load', () => {
   }
     initCards();
     $(function() {
-    $(".HeartAnimation").mouseover(function() {
+    $(".HeartAnimation").click(function() {
+      $(this).toggleClass("animate");
+      // setTimeout(window.location.replace("/movie_selections/favourites"),1000);
+    });
+
+    $(".EyeAnimation").click(function() {
       $(this).toggleClass("animate");
     });
   });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
