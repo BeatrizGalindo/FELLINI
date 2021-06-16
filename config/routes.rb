@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :movie_selections, only: [:index, :update]
   get '/movie_selections/watched', to: 'movie_selections#watched', as: 'watched_movie_selections'
   get '/movie_selections/favourites', to: 'movie_selections#favourites', as: 'favourites_movie_selections'
-  resources :users, only: [:show] do
+  resources :users, only: [:show, :index] do
     resources :friends, only: [:create]
   end
   resources :recommendations, only: [:index, :destroy]

@@ -1,23 +1,33 @@
+<div class="d-flex">
+  <div class="box d-flex align-items-center">
+    <h1> <%= "#{current_user.first_name} #{current_user.last_name}" %> </h1>
+    <%= cl_image_tag current_user.photo.key, class: "avatar-large" %>
+    <p> <%= @user.bio %> </p>
+    <%= link_to "Friends", movies_path, class: "btn active-tab m-3" %>
+  </div>
+    <div>
 
-<div class="box d-flex align-items-center">
-  <h1> <%= "#{current_user.first_name} #{current_user.last_name}" %> </h1>
-  <img class="avatar-large" alt="avatar-large" src=<%= "#{}" %> />
-  <p> <%= current_user.bio %> </p>
-  <%= link_to 'Friends', movies_path, class: "btn active-tab m-3" %>
-</div>
+        <div><h3>Friends recommended... </h3>
 
+          <% @suggested_movies.each do |suggested_movie| %>
 
-
-
-        <div class="user-list d-flex">
-          <% @users.each do |user| %>
-            <div class="user-card">
-              <% if current_user.friends?(user) %>
-                <%= link_to "Unfriend #{user.first_name}", friend_path(Friend.where(user: current_user, friend: user).or(Friend.where(user: user, friend: current_user)).first), method: :delete  %>
-                <% else %>
-                <%= link_to "Add #{user.first_name}" , user_friends_path(current_user, friend: user), method: :post %>
+            <%= link_to movie_path(suggested_movie.movie) do  %>
+              <div class="smallcard-category relative m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path suggested_movie.poster.key %>)">
+              </div>
               <% end %>
-             </div>
-          <% end %>
+            <% end %>
+
+            <div><h3> <%= @user.first_name %> recommended... </h3></div>
+
+          <div class="d-flex">
+            <% @recommended_movies.each do |recommended_movie| %>
+
+              <%= link_to movie_path(recommended_movie) do  %>
+                <div class="smallcard-category relative m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path recommended_movie.poster.key %>)">
+                </div>
+              <% end %>
+            <% end %>
+          </div>
         </div>
+    </div>
 </div>
