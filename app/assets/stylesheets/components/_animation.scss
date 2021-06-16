@@ -22,3 +22,16 @@
     background-position: right
   }
 }
+
+
+.EyeAnimation {
+  padding-top: 2em;
+  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/66955/web_heart_animation.png');
+  background-repeat: no-repeat;
+  background-size: 2900%;
+  background-position: left;
+  height: 50px;
+  width: 50px;
+  margin: 0 auto;
+  cursor: pointer;
+}
