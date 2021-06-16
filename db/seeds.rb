@@ -152,7 +152,7 @@ user16.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 # # then we save it
 platforms = Movie.platform.values
 
-30.times do
+40.times do
   movie_title = Faker::Movie.unique.title
 
   url = "http://www.omdbapi.com/?t=#{CGI.escape(movie_title)}&apikey=#{ENV['OMDB_KEY']}"

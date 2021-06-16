@@ -1,31 +1,37 @@
-<div class="d-flex">
-  <div class="box d-flex align-items-center">
-    <h1> <%= "#{current_user.first_name} #{current_user.last_name}" %> </h1>
-    <%= cl_image_tag current_user.photo.key, class: "avatar-large" %>
+<div class="d-flex flex-column align-items-center">
+  <div class="box d-flex align-items-center px-5" style="width: 900px">
+    <h1 class="mb-3"> <%= "#{@user.first_name} #{@user.last_name}" %> </h1>
+    <%= cl_image_tag @user.photo.key, class: "avatar-large mb-3" %>
     <p> <%= @user.bio %> </p>
-    <%= link_to "Friends", movies_path, class: "btn active-tab m-3" %>
+    <%= link_to "Friends", users_path, class: "btn active-tab m-3" %>
   </div>
-    <div>
-
-        <div><h3>Friends recommended... </h3>
-
-          <% @suggested_movies.each do |suggested_movie| %>
-            <%= link_to movie_path(suggested_movie.movie) do  %>
-              <div class="smallcard-category relative m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path suggested_movie.poster.key %>)">
-              </div>
-              <% end %>
-            <% end %>
-
-            <div><h3> <%= @user.first_name %> recommended... </h3></div>
-
-          <div class="d-flex">
-            <% @recommended_movies.each do |recommended_movie| %>
-              <%= link_to movie_path(recommended_movie) do  %>
-                <div class="smallcard-category relative m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path recommended_movie.poster.key %>)">
-                </div>
-              <% end %>
-            <% end %>
-          </div>
+  <div>
+    <div><h3> <%= @user.first_name %> recommended... </h3></div>
+    <div class="d-flex">
+      <% @recommended_movies.each do |recommended_movie| %>
+        <div class="smallcard-category f0 relative m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path recommended_movie.movie.poster.key %>)">
+          <%= link_to user_path(recommended_movie.recommendee), class: "top-left" do  %>
+            <%= cl_image_tag recommended_movie.recommendee.photo.key, class: "avatar", alt: "alttext" %>
+          <% end %>
+          <%= link_to movie_path(recommended_movie.movie), class: "abs-link" do  %>
+          <% end %>
         </div>
+      <% end %>
     </div>
+    <div><h3>Friends recommended... </h3>
+      <div class="d-flex">
+        <% @suggested_movies.each do |suggested_movie| %>
+
+          <div class="smallcard-category f0 relative m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path suggested_movie.movie.poster.key %>)">
+            <%= link_to user_path(suggested_movie.user), class: "top-left" do  %>
+              <%= cl_image_tag suggested_movie.user.photo.key, class: "avatar", alt: "alttext" %>
+            <% end %>
+
+            <%= link_to movie_path(suggested_movie.movie), class: "abs-link" do  %>
+            <% end %>
+           </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

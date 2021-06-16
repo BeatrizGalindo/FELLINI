@@ -27,3 +27,17 @@
 .avatar:hover {
   box-shadow: 0 0 5px rgba(255,255,255,0.8);
 }
+
+.top-left {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  z-index: 100;
+}
+.abs-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
