@@ -10,7 +10,8 @@ class RecommendationsController < ApplicationController
     @recommendation.user = current_user
     @recommendation.movie = @movie
     @recommendation.save
-    flash[:notice] = "Movie recommended to #{@recommendation.recommendee.first_name}"
+    flash[:notice] = "Movie recommended to #{@recommendation.recommendee.first_name}!"
+
     redirect_back fallback_location: request.referrer
   end
 
