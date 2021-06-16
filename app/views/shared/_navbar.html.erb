@@ -72,7 +72,7 @@
 
                 <% current_user.recommended.each do |recommendation| %>
                   <div class="tinder--card" data-url="<%= watch_api_v1_recommendation_url(recommendation) %>" data-destroy="<%= api_v1_recommendation_url(recommendation) %>">
-                    <%= image_tag recommendation.movie.poster, alt: "", class: "movie-poster-show" %>
+                    <%= image_tag recommendation.movie.poster, alt: "", class: "tinder--img" %>
                     <h3><%= recommendation.movie.title %></h3>
                     <p><%= recommendation.movie.description %></p>
                   </div>

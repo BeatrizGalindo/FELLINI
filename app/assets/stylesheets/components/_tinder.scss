@@ -12,7 +12,7 @@ body {
 
 .tinder {
   width: 100%;
-  height: 500px;
+  height: 720px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -21,6 +21,10 @@ body {
   transition: opacity 0.1s ease-in-out;
 }
 
+.tinder--img {
+
+  height: 240px;
+}
 .loaded.tinder {
   opacity: 1;
 }
@@ -84,6 +88,7 @@ body {
   cursor: -webkit-grab;
   cursor: -moz-grab;
   cursor: grab;
+  padding-top: 20px;
 }
 
 .moving.tinder--card {
@@ -99,15 +104,15 @@ body {
 }
 
 .tinder--card h3 {
-  margin-top: 32px;
+  margin-top: 12px;
   font-size: 32px;
   padding: 0 16px;
   pointer-events: none;
 }
 
 .tinder--card p {
-  margin-top: 24px;
-  font-size: 20px;
+  margin-top: 18px;
+  font-size: 15px;
   padding: 0 16px;
   pointer-events: none;
 }
