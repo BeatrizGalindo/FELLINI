@@ -11,6 +11,7 @@ require 'faker'
 MovieSelection.destroy_all
 Recommendation.destroy_all
 Movie.destroy_all
+Friend.destroy_all
 User.destroy_all
 
 
