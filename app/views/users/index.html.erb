@@ -1,19 +1,18 @@
 <div class="container">
 <div class="search-bar-header">
-      <h1>Find fellow movie lovers...</h1>
+  <h1>Find fellow movie lovers...</h1>
 
-        <div>
-          <%= form_tag users_path, method: :get do %>
-            <div class="search-bar d-flex" id="user-search">
-              <%= text_field_tag :query,
-                params[:query],
-                class: "user-form-control" %>
-              <%= submit_tag "Search", class: "btn ml-3 active-tab" %>
-            </div>
-          <% end %>
+    <div>
+      <%= form_tag users_path, method: :get do %>
+        <div class="search-bar d-flex" id="user-search">
+          <%= text_field_tag :query,
+            params[:query],
+            class: "user-form-control" %>
+          <%= submit_tag "Search", class: "btn ml-3 active-tab" %>
         </div>
-
+      <% end %>
     </div>
+</div>
 
 
 <div class="user-list d-flex">
