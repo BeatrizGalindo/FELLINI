@@ -7,13 +7,13 @@ class FriendsController < ApplicationController
     @friend = Friend.new(friend: User.find(params[:friend].to_i))
     @friend.user = current_user
     @friend.save
-    redirect_to user_path(current_user)
+    redirect_to users_path
   end
 
   def destroy
     @friend = Friend.find(params[:id])
     @friend.destroy
-    redirect_to user_path(current_user)
+    redirect_to users_path
   end
 
   private

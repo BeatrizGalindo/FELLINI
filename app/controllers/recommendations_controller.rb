@@ -11,6 +11,7 @@ class RecommendationsController < ApplicationController
     @recommendation.movie = @movie
     @recommendation.save
     flash[:notice] = "Movie recommended to #{@recommendation.recommendee.first_name}!"
+
     redirect_back fallback_location: request.referrer
   end
 
