@@ -1,7 +1,9 @@
 .user-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
+
 .f-col {
   display: flex;
   flex-direction: column;

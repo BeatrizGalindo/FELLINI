@@ -3,10 +3,14 @@
   <div class="friends-list d-flex">
     <div class="friends-header mb-1">
       <h3>Your friends...</h3>
-        <% @friends.each do |friend| %>
-          <%= link_to user_path(friend) do  %>
-            <%= cl_image_tag friend.photo.key, class: "friend-img m-1" %>
+        <% if @friends.any? %>
+          <% @friends.each do |friend| %>
+            <%= link_to user_path(friend), class: "friend-link" do  %>
+              <%= cl_image_tag friend.photo.key, class: "friend-img m-1" %>
+            <% end %>
           <% end %>
+        <% else %>
+          <p>You haven't got any friends yet - Try searching below!</p>
         <% end %>
     </div>
   </div>
