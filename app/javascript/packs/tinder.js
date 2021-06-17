@@ -69,6 +69,15 @@ export const initCards = () => {
     });
   });
 
+  function dealWithBadge() {
+    let badge = document.getElementById('rec-badge')
+    if (+badge.innerText > 1) {
+      badge.innerText = +badge.innerText - 1
+    } else {
+      badge.remove()
+    }
+  }
+
   function createButtonListener(love) {
     return function (event) {
 
@@ -92,6 +101,7 @@ export const initCards = () => {
           .then((data) => {
             console.log(data);
           });
+          dealWithBadge()
       } else {
         card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
         // write ajax call to destroy recommendation
@@ -104,6 +114,7 @@ export const initCards = () => {
           .then((data) => {
             console.log(data); // Look at local_names.default
           });
+          dealWithBadge()
       }
 
       initCards();

@@ -18,8 +18,13 @@
         <li class="nav-item active">
           <%= link_to "My watchlist", movie_selections_path, class: "nav-link" %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item relative">
           <%= link_to "Recommendations", "#", data:{toggle: "modal", target: "#recommendModal"}, class: "nav-link" %>
+          <% if current_user.recommended.count > 0 %>
+            <div class="badge" id='rec-badge'>
+              <%= current_user.recommended.count %>
+            </div>
+          <% end %>
         </li>
         <li class="nav-item">
           <%= link_to "Friends", users_path, class: "nav-link" %>
