@@ -18,7 +18,7 @@
 
           <div class="absoluteheart">
             <%= link_to movie_selection_path(movie_selection, attribute: :favourite), method: :put do %>
-              <div class="HeartAnimation iconstyle"></div>
+              <div class="HeartAnimation iconstyle" data-toggle="tooltip" data-placement="top" title="Add this to your favourites"></div>
             <% end %>
           </div>
           <%= link_to movie_path(movie_selection.movie), class: "abs-link" do %>
