@@ -6,6 +6,9 @@
           <% @friends.each do |friend| %>
             <%= link_to user_path(friend), class: "friend-link" do  %>
               <%= cl_image_tag friend.photo.key, class: "friend-img m-1" %>
+              <span class="friend-name">
+                <%= friend.first_name %>
+              </span>
             <% end %>
           <% end %>
         <% else %>
@@ -13,6 +16,7 @@
         <% end %>
     </div>
   </div>
+
   <div class="search-bar-header">
     <h1>Find fellow movie lovers...</h1>
       <div>
@@ -26,6 +30,7 @@
         <% end %>
       </div>
   </div>
+
   <div class="user-list d-flex">
     <% @users.each do |user| %>
       <div class="friend-card align-items-center d-flex m-3">

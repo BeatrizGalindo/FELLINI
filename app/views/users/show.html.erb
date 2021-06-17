@@ -3,7 +3,13 @@
     <h1 class="mb-3"> <%= "#{@user.first_name} #{@user.last_name}" %> </h1>
     <%= cl_image_tag @user.photo.key, class: "avatar-large mb-3" %>
     <p> <%= @user.bio %> </p>
-    <%= link_to "Friends", users_path, class: "btn active-tab m-3" %>
+    <% if current_user.friends?(user) %>
+          <%= link_to "Unfriend #{user.first_name}", friend_path(Friend.where(user: current_user, friend: user).or(Friend.where(user: user, friend: current_user)).first), method: :delete  %>
+          <% else %>
+          <%= link_to "Add #{user.first_name}" , user_friends_path(current_user, friend: user), method: :post %>
+        <% end %>
+       </div>
+    <% end %>
   </div>
   <div>
     <div><h3> <%= @user.first_name %> recommended... </h3></div>
