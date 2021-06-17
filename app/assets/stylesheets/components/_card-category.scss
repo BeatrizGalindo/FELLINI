@@ -31,11 +31,31 @@
   text-decoration: none;
 }
 
+.friend-link {
+  display: inline-flex;
+  flex-direction: column;
+  position: relative;
+}
+
 .friend-link:hover {
   text-decoration: none;
+  .friend-name {
+    opacity: 1;
+  }
 }
 
 .friend-list {
   display: flex;
   justify-content: space-evenly;
+}
+
+.friend-name {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  position: absolute;
+  bottom: -26px;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  right: 0;
 }
