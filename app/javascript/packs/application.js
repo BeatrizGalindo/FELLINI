@@ -57,6 +57,11 @@ document.addEventListener('turbolinks:load', () => {
     $(".EyeAnimation").click(function() {
       $(this).toggleClass("animate");
     });
+
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+
   });
 });
 
