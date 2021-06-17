@@ -3,33 +3,47 @@
     <h1 class="mb-3"> <%= "#{@user.first_name} #{@user.last_name}" %> </h1>
     <%= cl_image_tag @user.photo.key, class: "avatar-large mb-3" %>
     <p> <%= @user.bio %> </p>
-    <%= link_to "Friends", users_path, class: "btn active-tab m-3" %>
+    <% unless current_user == @user %>
+      <% if current_user.friends?(@user) %>
+        <%= link_to "Unfriend #{@user.first_name}", friend_path(Friend.where(user: current_user, friend: @user).or(Friend.where(user: @user, friend: current_user)).first), method: :delete, class: "btn m-3 active-tab" %>
+      <% else %>
+        <%= link_to "Add #{@user.first_name}" , user_friends_path(current_user, friend: @user), method: :post, class: "btn m-3 active-tab" %>
+      <% end %>
+    <% end %>
+
+
   </div>
   <div>
     <div><h3> <%= @user.first_name %> recommended... </h3></div>
     <div class="d-flex">
-      <% @recommended_movies.each do |recommended_movie| %>
-        <div class="smallcard-category f0 relative m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path recommended_movie.movie.poster.key %>)">
-          <%= link_to user_path(recommended_movie.recommendee), class: "top-left" do  %>
-            <%= cl_image_tag recommended_movie.recommendee.photo.key, class: "avatar", alt: "alttext" %>
-          <% end %>
-          <%= link_to movie_path(recommended_movie.movie), class: "abs-link" do  %>
-          <% end %>
-        </div>
+      <% if @recommended_movies.any? %>
+        <% @recommended_movies.each do |recommended_movie| %>
+          <div class="smallcard-category f0 relative m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path recommended_movie.movie.poster.key %>)">
+            <%= link_to user_path(recommended_movie.recommendee), class: "top-left" do  %>
+              <%= cl_image_tag recommended_movie.recommendee.photo.key, class: "avatar", alt: "alttext" %>
+            <% end %>
+            <%= link_to movie_path(recommended_movie.movie), class: "abs-link" do  %>
+            <% end %>
+          </div>
+        <% end %>
+      <% else %>
+        <p> <%= @user.first_name %> hasn't made any recommendations yet.</p>
       <% end %>
     </div>
     <div><h3>Friends recommended... </h3>
       <div class="d-flex">
-        <% @suggested_movies.each do |suggested_movie| %>
-
-          <div class="smallcard-category f0 relative m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path suggested_movie.movie.poster.key %>)">
-            <%= link_to user_path(suggested_movie.user), class: "top-left" do  %>
-              <%= cl_image_tag suggested_movie.user.photo.key, class: "avatar", alt: "alttext" %>
-            <% end %>
-
-            <%= link_to movie_path(suggested_movie.movie), class: "abs-link" do  %>
-            <% end %>
-           </div>
+        <% if @suggested_movies.any? %>
+          <% @suggested_movies.each do |suggested_movie| %>
+            <div class="smallcard-category f0 relative m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path suggested_movie.movie.poster.key %>)">
+              <%= link_to user_path(suggested_movie.user), class: "top-left" do  %>
+                <%= cl_image_tag suggested_movie.user.photo.key, class: "avatar", alt: "alttext" %>
+              <% end %>
+              <%= link_to movie_path(suggested_movie.movie), class: "abs-link" do  %>
+              <% end %>
+            </div>
+          <% end %>
+        <% else %>
+         <p> Be the first to recommend a movie to <%= @user.first_name %> <%= link_to "here", movies_path %>. </p>
         <% end %>
       </div>
     </div>
