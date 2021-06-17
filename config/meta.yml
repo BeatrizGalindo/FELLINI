@@ -2,4 +2,4 @@ meta_product_name: "Fellini"
 meta_title: "Fellini - The Ultimate Movie App"
 meta_description: "Discover and recommend movies on all your favourite streaming platforms"
 meta_image: "ocho-y-medio.png" # should exist in `app/assets/images/`
-twitter_account: "@product_twitter_account"   # required for Twitter Cards
+twitter_account: "@fellini_twitter_account"   # required for Twitter Cards
