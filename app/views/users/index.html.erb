@@ -41,9 +41,9 @@
           </div>
         <% end %>
         <% if current_user.friends?(user) %>
-          <%= link_to "Unfriend #{user.first_name}", friend_path(Friend.where(user: current_user, friend: user).or(Friend.where(user: user, friend: current_user)).first), method: :delete  %>
+          <%= link_to "Unfriend #{user.first_name}", friend_path(Friend.where(user: current_user, friend: user).or(Friend.where(user: user, friend: current_user)).first), method: :delete, class: "btn-friends m-1 active-tab"  %>
           <% else %>
-          <%= link_to "Add #{user.first_name}" , user_friends_path(current_user, friend: user), method: :post %>
+          <%= link_to "Add #{user.first_name}" , user_friends_path(current_user, friend: user), method: :post, class: "btn-friends m-1 active-tab" %>
         <% end %>
        </div>
     <% end %>
