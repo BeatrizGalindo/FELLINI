@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
   def index
     @friends = current_user.all_friend_people
+    @ids = [current_user.id] + @friends.map{|r| r.id}
     if params[:query]
-      @users = User.where.not(id: current_user.id).where("first_name ILIKE ?", "%#{params[:query]}%")
+      @users = User.where.not(id: @ids).where("first_name ILIKE ?", "%#{params[:query]}%")
     else
-      @users = User.where.not(id: current_user.id)
+      @users = User.where.not(id: @ids)
     end
   end
 

@@ -35,3 +35,14 @@
   margin: 0 auto;
   cursor: pointer;
 }
+
+
+.hide {
+  display: none;
+}
+
+.tag-text:hover + .hide {
+  display: block;
+  color: $light-gray;
+}
+
