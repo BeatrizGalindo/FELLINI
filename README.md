@@ -1,1 +1,1 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+To join the FELLINI website you can use the email: beatriz@test.com and the password: 123456. Enjoy!
